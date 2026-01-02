@@ -8,6 +8,7 @@ public class BallBehaviour : MonoBehaviour
     public float jumpForce;
     public InputAction jump;
     bool started;
+    bool gameOver;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -48,4 +49,17 @@ public class BallBehaviour : MonoBehaviour
             }
         }
     }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag =="ScoreChecker" && !gameOver)
+        {
+            ScoreManager.instance.ScoreIncrement();
+        }
+        else
+        {
+            gameOver=true;
+        }
+    }
+
+
 }
