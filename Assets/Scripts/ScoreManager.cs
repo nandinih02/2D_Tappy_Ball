@@ -3,7 +3,7 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
-    int score = 0;
+    public int score = 0;
     int highScore;
 
     void Awake()
@@ -17,6 +17,7 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         score = 0;
+        highScore=PlayerPrefs.GetInt("HighScore");
     }
 
     // Update is called once per frame
@@ -24,17 +25,18 @@ public class ScoreManager : MonoBehaviour
     {
         if(score>highScore)
         {
-            highScore =score;
+            highScore = score;
+            PlayerPrefs.SetInt("HighScore", highScore);
             
         }
     }
     public void ScoreIncrement()
     {
         score++;
-        Debug.Log(score);
+        //Debug.Log(score);
     }
     public void StopScore()
     {
-        PlayerPrefs.SetInt("HighScore", highScore);
+        //PlayerPrefs.SetInt("HighScore", highScore);
     }
 }

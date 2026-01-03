@@ -58,6 +58,7 @@ public class BallBehaviour : MonoBehaviour
         else
         {
             gameOver=true;
+            ScoreManager.instance.StopScore();
         }
     }
 
