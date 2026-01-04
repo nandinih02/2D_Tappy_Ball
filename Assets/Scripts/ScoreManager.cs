@@ -26,7 +26,7 @@ public class ScoreManager : MonoBehaviour
         if(score>highScore)
         {
             highScore = score;
-            PlayerPrefs.SetInt("HighScore", highScore);
+            //PlayerPrefs.SetInt("HighScore", highScore);
             
         }
     }
@@ -37,6 +37,6 @@ public class ScoreManager : MonoBehaviour
     }
     public void StopScore()
     {
-        //PlayerPrefs.SetInt("HighScore", highScore);
+        PlayerPrefs.SetInt("HighScore", highScore);
     }
 }

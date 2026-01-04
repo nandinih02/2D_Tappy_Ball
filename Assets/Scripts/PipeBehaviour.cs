@@ -3,9 +3,17 @@ using UnityEngine;
 
 public class PipeBehaviour : MonoBehaviour
 {
-    
+    public static PipeBehaviour instance;
     public float moveSpeed;
     Rigidbody2D rb;
+
+    void Awake()
+    {
+        if(instance==null)
+        {
+            instance=this;
+        }
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

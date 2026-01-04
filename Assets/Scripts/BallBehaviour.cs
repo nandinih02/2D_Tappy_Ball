@@ -7,6 +7,7 @@ public class BallBehaviour : MonoBehaviour
     Rigidbody2D rb;
     public float jumpForce;
     public InputAction jump;
+    public float rotation;
     bool started;
     bool gameOver;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -38,16 +39,27 @@ public class BallBehaviour : MonoBehaviour
             {
                 started = true;
                 rb.bodyType = RigidbodyType2D.Dynamic;
+                GameManager.instance.GameStart();
             }
         }
-        else
+        else if(started && !gameOver)
         {
+            transform.Rotate(0,0,rotation);
+            
             if(jump.triggered)
             {
                 rb.linearVelocity = Vector2.zero;
                 rb.AddForce( new Vector2 (0, jumpForce));
+                
             }
         }
+    }
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        gameOver = true;
+        GetComponent<Animator>().Play("Ball");
+        GameManager.instance.GameOver();
+        
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -55,10 +67,12 @@ public class BallBehaviour : MonoBehaviour
         {
             ScoreManager.instance.ScoreIncrement();
         }
-        else
+        else if(collision.gameObject.tag =="Pipe" && !gameOver)
         {
             gameOver=true;
-            ScoreManager.instance.StopScore();
+            GetComponent<Animator>().Play("Ball");
+            GameManager.instance.GameOver();
+            
         }
     }
 
