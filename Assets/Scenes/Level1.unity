@@ -2101,6 +2101,7 @@ MonoBehaviour:
   scoreText: {fileID: 1239847301}
   highScoreText: {fileID: 583075020}
   gameOverPanel: {fileID: 1715004323}
+  gameStart: {fileID: 2069192664}
 --- !u!1 &1715004323
 GameObject:
   m_ObjectHideFlags: 0
