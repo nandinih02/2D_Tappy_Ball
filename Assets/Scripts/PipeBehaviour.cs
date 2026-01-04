@@ -10,13 +10,17 @@ public class PipeBehaviour : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D> ();
-        MovePipes();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    void FixedUpdate()
+    {
+        MovePipes();
     }
     public void MovePipes()
     {
