@@ -3,7 +3,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    bool gameOver;
+    public bool gameOver;
 
     void Awake()
     {
@@ -17,30 +17,22 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        gameOver=true;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
     public void GameStart()
     {
+        gameOver=false;
         UIManager.instance.GameStart();
         GameObject.Find("PipeSpawner").GetComponent<PipeSpawner>().StartSpawningPipes();
     }
     public void GameOver()
     {
-        gameOver=false;
+        gameOver=true;
         ScoreManager.instance.StopScore();
         UIManager.instance.GameOver();
+        //PipeBehaviour.instance.StopPipes();
         GameObject.Find("PipeSpawner").GetComponent<PipeSpawner>().StopSpawningPipes();
 
         
     }
+
 }

@@ -18,21 +18,31 @@ public class PipeBehaviour : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D> ();
+        MovePipes();
         
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(GameManager.instance.gameOver)
+        {
+            StopPipes();
+        }
         
     }
     void FixedUpdate()
     {
-        MovePipes();
+        
     }
     public void MovePipes()
     {
         rb.linearVelocity = new Vector2(moveSpeed, 0);
+    }
+
+    public void StopPipes()
+    {
+        rb.linearVelocity = Vector2.zero;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
