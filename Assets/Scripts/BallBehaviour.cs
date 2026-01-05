@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -45,7 +44,7 @@ public class BallBehaviour : MonoBehaviour
         else if(started && !gameOver)
         {
             transform.Rotate(0,0,rotation);
-            
+
             if(jump.triggered)
             {
                 rb.linearVelocity = Vector2.zero;

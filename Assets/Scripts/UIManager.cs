@@ -29,6 +29,7 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        highScore = PlayerPrefs.GetInt("HighScore");
         scoreText.text = ScoreManager.instance.score.ToString();
         highScoreText.text = highScore.ToString();
 

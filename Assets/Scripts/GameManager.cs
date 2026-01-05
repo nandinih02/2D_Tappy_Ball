@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour
         gameOver=true;
         ScoreManager.instance.StopScore();
         UIManager.instance.GameOver();
-        //PipeBehaviour.instance.StopPipes();
         GameObject.Find("PipeSpawner").GetComponent<PipeSpawner>().StopSpawningPipes();
 
         

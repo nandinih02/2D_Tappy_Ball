@@ -26,7 +26,7 @@ public class ScoreManager : MonoBehaviour
         if(score>highScore)
         {
             highScore = score;
-            //PlayerPrefs.SetInt("HighScore", highScore);
+            PlayerPrefs.SetInt("HighScore", highScore);
             
         }
     }
